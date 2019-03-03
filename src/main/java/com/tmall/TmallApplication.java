@@ -1,0 +1,18 @@
+package com.tmall;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@MapperScan(basePackages = "com.tmall.dao")
+@ComponentScan
+public class TmallApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(TmallApplication.class, args);
+	}
+
+}
+
