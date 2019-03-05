@@ -35,7 +35,7 @@ public class ProductImgServiceImpl implements ProductImgService {
 
     @Override
     public void update(ProductImg productImg) {
-        productImgMapper.updateByPrimaryKeySelective(productImg)
+        productImgMapper.updateByPrimaryKeySelective(productImg);
     }
 
     @Override

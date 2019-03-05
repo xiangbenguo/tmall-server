@@ -1,11 +1,13 @@
 package com.tmall.controller;
 
+import com.tmall.common.AbstractBaseController;
+import com.tmall.common.CodeMessageDef;
+import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.Product;
 import com.tmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 /**
@@ -13,7 +15,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "product")
-public class ProductController {
+public class ProductController extends AbstractBaseController {
 
     @Autowired
     ProductService productService;
@@ -34,9 +36,9 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public Object get(@RequestParam (required = false) Integer id) {
+    public Object get(@RequestParam (required = false) Integer id) throws MyException {
         if (id == null) {
-            // TODO 返回异常
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
         Product product = productService.get(id);
         return new ResultBean(product);
@@ -48,9 +50,9 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object add(@RequestBody Product product) {
+    public Object add(@RequestBody Product product) throws MyException {
         if (product == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         productService.add(product);
@@ -58,9 +60,9 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/update", method =  RequestMethod.POST)
-    public Object update(@RequestBody Product product){
+    public Object update(@RequestBody Product product) throws MyException {
         if (product == null || product.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         productService.update(product);
@@ -68,9 +70,9 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Object delete (@RequestBody Product product) {
+    public Object delete (@RequestBody Product product) throws MyException {
         if (product == null || product.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         productService.delete(product.getId());
