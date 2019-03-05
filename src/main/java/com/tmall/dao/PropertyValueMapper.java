@@ -3,6 +3,8 @@ package com.tmall.dao;
 
 import com.tmall.entity.PropertyValue;
 
+import java.util.List;
+
 public interface PropertyValueMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -15,4 +17,6 @@ public interface PropertyValueMapper {
     int updateByPrimaryKeySelective(PropertyValue record);
 
     int updateByPrimaryKey(PropertyValue record);
+
+    List<PropertyValue> list();
 }

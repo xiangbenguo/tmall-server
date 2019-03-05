@@ -33,7 +33,7 @@ public class CategoryController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/get", method = RequestMethod.POST)
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
     public  Object get(@RequestParam(required = false) Integer id) {
         if (id == null) {
             // TODO
@@ -57,7 +57,7 @@ public class CategoryController {
         return new ResultBean();
     }
 
-    @RequestMapping(value = "update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public Object update(@RequestBody Category category) {
         if (category == null || category.getId() == null) {
             // TODO
@@ -67,7 +67,7 @@ public class CategoryController {
         return new ResultBean();
     }
 
-    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public Object delete(@RequestBody Category category) {
         if (category == null || category.getId() == null) {
             // TODO

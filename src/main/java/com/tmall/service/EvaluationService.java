@@ -17,4 +17,6 @@ public interface EvaluationService {
     void update(Evaluation evaluation);
 
     void delete(Integer id);
+
+    List<Evaluation> getPlist(Integer pid);
 }

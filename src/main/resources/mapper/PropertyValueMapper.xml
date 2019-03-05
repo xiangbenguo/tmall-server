@@ -17,7 +17,11 @@
     from propertyvalue
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="list" resultType="com.tmall.entity.PropertyValue">
+      select <include refid="Base_Column_List" />
+      from propertyvalue
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from propertyvalue
     where id = #{id,jdbcType=INTEGER}
   </delete>

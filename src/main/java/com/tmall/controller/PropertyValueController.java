@@ -1,29 +1,23 @@
 package com.tmall.controller;
 
 import com.tmall.common.ResultBean;
-import com.tmall.entity.User;
-import com.tmall.service.UserService;
+import com.tmall.entity.PropertyValue;
+import com.tmall.service.PropertyValueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by yangxiong on 2019/3/3.
- */
 @RestController
-@RequestMapping(value = "user")
-public class UserController {
-    @Autowired
-    UserService userService;
+@RequestMapping(value = "propertyValue")
+public class PropertyValueController {
 
-    /**
-     * 产品列表
-     * @return
-     */
+    @Autowired
+    PropertyValueService propertyValueService;
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Object list() {
-        List<User> list = userService.list();
+        List<PropertyValue> list = propertyValueService.list();
         return new ResultBean(list);
     }
 
@@ -33,37 +27,37 @@ public class UserController {
             // TODO
         }
 
-        User user = userService.get(id);
-        return new ResultBean(user);
+        PropertyValue propertyValue = propertyValueService.get(id);
+        return new ResultBean(propertyValue);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object add(@RequestBody User user) {
-        if (user == null) {
+    public Object add(@RequestBody PropertyValue propertyValue) {
+        if (propertyValue == null) {
             // TODO
         }
 
-        userService.add(user);
+        propertyValueService.add(propertyValue);
         return new ResultBean();
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public Object update(@RequestBody User user) {
-        if (user == null || user.getId() == null) {
+    public Object update(@RequestBody PropertyValue propertyValue) {
+        if (propertyValue == null || propertyValue.getId() == null) {
             // TODO
         }
 
-        userService.update(user);
+        propertyValueService.update(propertyValue);
         return new ResultBean();
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Object delete(@RequestBody User user) {
-        if (user == null || user.getId() == null) {
+    public Object delete(@RequestBody PropertyValue propertyValue) {
+        if (propertyValue == null || propertyValue.getId() == null) {
             // TODO
         }
 
-        userService.delete(user.getId());
+        propertyValueService.delete(propertyValue.getId());
         return new ResultBean();
     }
 }

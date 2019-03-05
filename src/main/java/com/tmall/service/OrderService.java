@@ -18,5 +18,5 @@ public interface OrderService {
 
     void delete(Integer id);
 
-    List<Order> getUserOrder(Integer id);
+    List<Order> getUserOrder(Integer uid);
 }

@@ -24,26 +24,26 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order get(Integer id) {
-        return null;
+        return orderMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public void add(Order order) {
-
+        orderMapper.insertSelective(order);
     }
 
     @Override
     public void update(Order productImg) {
-
+        orderMapper.updateByPrimaryKeySelective(productImg);
     }
 
     @Override
     public void delete(Integer id) {
-
+        orderMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public List<Order> getUserOrder(Integer id) {
-        return orderMapper.getUserOrder(id);
+    public List<Order> getUserOrder(Integer uid) {
+        return orderMapper.getUserOrder(uid);
     }
 }

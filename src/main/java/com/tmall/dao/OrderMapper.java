@@ -20,5 +20,5 @@ public interface OrderMapper {
 
     List<Order> list();
 
-    List<Order> getUserOrder(Integer id);
+    List<Order> getUserOrder(Integer uid);
 }

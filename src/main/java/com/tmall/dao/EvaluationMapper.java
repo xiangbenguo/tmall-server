@@ -2,6 +2,8 @@ package com.tmall.dao;
 
 import com.tmall.entity.Evaluation;
 
+import java.util.List;
+
 public interface EvaluationMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,4 +18,8 @@ public interface EvaluationMapper {
     int updateByPrimaryKeyWithBLOBs(Evaluation record);
 
     int updateByPrimaryKey(Evaluation record);
+
+    List<Evaluation> list();
+
+    List<Evaluation> getPlist(Integer pid);
 }

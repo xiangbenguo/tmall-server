@@ -23,7 +23,9 @@
       FROM _order
     </select>
   <select id="getUserOrder" resultType="com.tmall.entity.Order">
-
+      SELECT <include refid="Base_Column_List"/>
+      from _order
+      where uid = #{uid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from _order

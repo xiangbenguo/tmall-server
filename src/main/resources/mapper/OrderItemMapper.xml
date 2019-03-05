@@ -19,6 +19,15 @@
     from _orderitem
     where id = #{id,jdbcType=INTEGER}
   </select>
+    <select id="list" resultType="com.tmall.entity.OrderItem">
+      SELECT <include refid="Base_Column_List"/>
+      FROM _orderitem
+    </select>
+  <select id="getOrderItem" resultType="com.tmall.entity.OrderItem">
+    select <include refid="Base_Column_List"/>
+    from _orderitem
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from _orderitem
     where id = #{id,jdbcType=INTEGER}

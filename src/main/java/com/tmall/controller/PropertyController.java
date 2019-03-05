@@ -28,7 +28,7 @@ public class PropertyController {
         return new ResultBean(list);
     }
 
-    @RequestMapping(value = "/get", method = RequestMethod.POST)
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
     public Object get(@RequestParam (required = false) Integer id) {
         if (id == null) {
             // TODO

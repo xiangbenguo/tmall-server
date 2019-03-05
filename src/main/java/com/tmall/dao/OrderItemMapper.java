@@ -1,5 +1,8 @@
 package com.tmall.dao;
 import com.tmall.entity.OrderItem;
+
+import java.util.List;
+
 public interface OrderItemMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -12,4 +15,8 @@ public interface OrderItemMapper {
     int updateByPrimaryKeySelective(OrderItem record);
 
     int updateByPrimaryKey(OrderItem record);
+
+    List<OrderItem> list();
+
+    List<OrderItem> getOrderItem(Integer oid);
 }
