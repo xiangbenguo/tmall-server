@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by yangxiong on 2019/3/5.
  */
-public class AbstractBaseController {
+public class GlobalExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     @ResponseBody
