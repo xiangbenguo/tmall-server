@@ -1,5 +1,8 @@
 package com.tmall.controller;
 
+import com.tmall.common.CodeMessageDef;
+import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.Order;
 import com.tmall.service.OrderService;
@@ -14,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "order")
-public class OrderController {
+public class OrderController extends GlobalExceptionHandler {
     @Autowired
     OrderService orderService;
 
@@ -34,9 +37,9 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public  Object get(@RequestParam(required = false) Integer id) {
+    public  Object get(@RequestParam(required = false) Integer id) throws MyException {
         if (id == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
         Order order = orderService.get(id);
         return new ResultBean(order);
@@ -48,9 +51,9 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object add(@RequestBody Order order) {
+    public Object add(@RequestBody Order order) throws MyException {
         if (order == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         orderService.add(order);
@@ -58,9 +61,9 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public Object update(@RequestBody Order order) {
+    public Object update(@RequestBody Order order) throws MyException {
         if (order == null || order.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         orderService.update(order);
@@ -68,19 +71,25 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Object delete(@RequestBody Order order) {
+    public Object delete(@RequestBody Order order) throws MyException {
         if (order == null || order.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         orderService.delete(order.getId());
         return new ResultBean();
     }
 
+    /**
+     * 获取用户订单
+     * @param uid
+     * @return
+     * @throws MyException
+     */
     @RequestMapping(value = "/getUserOrder", method = RequestMethod.GET)
-    public Object getUserOrder(@RequestParam(required = false) Integer uid) {
+    public Object getUserOrder(@RequestParam(required = false) Integer uid) throws MyException {
         if (uid == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         List<Order> orders = orderService.getUserOrder(uid);

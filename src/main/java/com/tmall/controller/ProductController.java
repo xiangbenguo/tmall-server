@@ -34,6 +34,7 @@ public class ProductController extends GlobalExceptionHandler {
      * 根据id获取
      * @param id
      * @return
+     * @throws MyException
      */
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public Object get(@RequestParam (required = false) Integer id) throws MyException {
@@ -48,6 +49,7 @@ public class ProductController extends GlobalExceptionHandler {
      * 添加产品
      * @param product
      * @return
+     * @throws MyException
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object add(@RequestBody Product product) throws MyException {
@@ -59,6 +61,12 @@ public class ProductController extends GlobalExceptionHandler {
         return new ResultBean();
     }
 
+    /**
+     * 修改产品
+     * @param product
+     * @return
+     * @throws MyException
+     */
     @RequestMapping(value = "/update", method =  RequestMethod.POST)
     public Object update(@RequestBody Product product) throws MyException {
         if (product == null || product.getId() == null) {
@@ -69,6 +77,12 @@ public class ProductController extends GlobalExceptionHandler {
         return  new ResultBean();
     }
 
+    /**
+     * 删除产品
+     * @param product
+     * @return
+     * @throws MyException
+     */
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public Object delete (@RequestBody Product product) throws MyException {
         if (product == null || product.getId() == null) {

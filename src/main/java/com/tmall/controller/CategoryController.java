@@ -1,6 +1,6 @@
 package com.tmall.controller;
 
-import com.tmall.common.ResultBean;
+import com.tmall.common.*;
 import com.tmall.entity.Category;
 import com.tmall.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "category")
-public class CategoryController {
+public class CategoryController extends GlobalExceptionHandler {
     @Autowired
     CategoryService categoryService;
 
@@ -34,9 +34,9 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public  Object get(@RequestParam(required = false) Integer id) {
+    public  Object get(@RequestParam(required = false) Integer id) throws MyException {
         if (id == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
         Category category = categoryService.get(id);
         return new ResultBean(category);
@@ -48,9 +48,9 @@ public class CategoryController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object add(@RequestBody Category category) {
+    public Object add(@RequestBody Category category) throws MyException{
         if (category == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         categoryService.add(category);
@@ -58,9 +58,9 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public Object update(@RequestBody Category category) {
+    public Object update(@RequestBody Category category) throws MyException {
         if (category == null || category.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         categoryService.update(category);
@@ -68,9 +68,9 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Object delete(@RequestBody Category category) {
+    public Object delete(@RequestBody Category category) throws MyException {
         if (category == null || category.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         categoryService.delete(category.getId());

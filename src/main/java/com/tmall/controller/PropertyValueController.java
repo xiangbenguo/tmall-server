@@ -1,5 +1,8 @@
 package com.tmall.controller;
 
+import com.tmall.common.CodeMessageDef;
+import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.PropertyValue;
 import com.tmall.service.PropertyValueService;
@@ -10,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "propertyValue")
-public class PropertyValueController {
+public class PropertyValueController extends GlobalExceptionHandler {
 
     @Autowired
     PropertyValueService propertyValueService;
@@ -22,9 +25,9 @@ public class PropertyValueController {
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public Object get(@RequestParam(required = false) Integer id) {
+    public Object get(@RequestParam(required = false) Integer id) throws MyException {
         if (id == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         PropertyValue propertyValue = propertyValueService.get(id);
@@ -32,9 +35,9 @@ public class PropertyValueController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object add(@RequestBody PropertyValue propertyValue) {
+    public Object add(@RequestBody PropertyValue propertyValue) throws MyException {
         if (propertyValue == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         propertyValueService.add(propertyValue);
@@ -42,9 +45,9 @@ public class PropertyValueController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public Object update(@RequestBody PropertyValue propertyValue) {
+    public Object update(@RequestBody PropertyValue propertyValue) throws MyException {
         if (propertyValue == null || propertyValue.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         propertyValueService.update(propertyValue);
@@ -52,9 +55,9 @@ public class PropertyValueController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Object delete(@RequestBody PropertyValue propertyValue) {
+    public Object delete(@RequestBody PropertyValue propertyValue) throws MyException {
         if (propertyValue == null || propertyValue.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         propertyValueService.delete(propertyValue.getId());

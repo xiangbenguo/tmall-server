@@ -1,5 +1,8 @@
 package com.tmall.controller;
 
+import com.tmall.common.CodeMessageDef;
+import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.User;
 import com.tmall.service.UserService;
@@ -13,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "user")
-public class UserController {
+public class UserController extends GlobalExceptionHandler {
     @Autowired
     UserService userService;
 
@@ -28,9 +31,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public Object get(@RequestParam(required = false) Integer id) {
+    public Object get(@RequestParam(required = false) Integer id) throws MyException {
         if (id == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         User user = userService.get(id);
@@ -38,9 +41,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object add(@RequestBody User user) {
+    public Object add(@RequestBody User user) throws MyException {
         if (user == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         userService.add(user);
@@ -48,9 +51,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public Object update(@RequestBody User user) {
+    public Object update(@RequestBody User user) throws MyException {
         if (user == null || user.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         userService.update(user);
@@ -58,9 +61,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Object delete(@RequestBody User user) {
+    public Object delete(@RequestBody User user) throws MyException {
         if (user == null || user.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         userService.delete(user.getId());

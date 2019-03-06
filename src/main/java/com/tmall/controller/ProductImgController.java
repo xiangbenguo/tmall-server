@@ -1,5 +1,8 @@
 package com.tmall.controller;
 
+import com.tmall.common.CodeMessageDef;
+import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.ProductImg;
 import com.tmall.service.ProductImgService;
@@ -13,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "productImg")
-public class ProductImgController {
+public class ProductImgController extends GlobalExceptionHandler {
     @Autowired
     ProductImgService productImgService;
 
@@ -33,9 +36,9 @@ public class ProductImgController {
      * @return
      */
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public Object get(@RequestParam(required = false) Integer id) {
+    public Object get(@RequestParam(required = false) Integer id) throws MyException {
         if (id == null) {
-            // TODO 返回异常
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
         ProductImg ProductImg = productImgService.get(id);
         return new ResultBean(ProductImg);
@@ -47,9 +50,9 @@ public class ProductImgController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object add(@RequestBody ProductImg productImg, Integer status) {
+    public Object add(@RequestBody ProductImg productImg, Integer status) throws MyException {
         if (productImg == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         productImgService.add(productImg);
@@ -57,9 +60,9 @@ public class ProductImgController {
     }
 
     @RequestMapping(value = "/update", method =  RequestMethod.POST)
-    public Object update(@RequestBody ProductImg productImg){
+    public Object update(@RequestBody ProductImg productImg) throws MyException {
         if (productImg == null || productImg.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         productImgService.update(productImg);
@@ -67,9 +70,9 @@ public class ProductImgController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Object delete (@RequestBody ProductImg productImg) {
+    public Object delete (@RequestBody ProductImg productImg) throws MyException {
         if (productImg == null || productImg.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         productImgService.delete(productImg.getId());

@@ -1,5 +1,8 @@
 package com.tmall.controller;
 
+import com.tmall.common.CodeMessageDef;
+import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.Property;
 import com.tmall.service.PropertyService;
@@ -14,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "property")
-public class PropertyController {
+public class PropertyController extends GlobalExceptionHandler {
     @Autowired
     PropertyService propertyService;
 
@@ -29,9 +32,9 @@ public class PropertyController {
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public Object get(@RequestParam (required = false) Integer id) {
+    public Object get(@RequestParam (required = false) Integer id) throws MyException {
         if (id == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         Property property = propertyService.get(id);
@@ -39,9 +42,9 @@ public class PropertyController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object add(@RequestBody Property property) {
+    public Object add(@RequestBody Property property) throws MyException {
         if (property == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         propertyService.add(property);
@@ -49,9 +52,9 @@ public class PropertyController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public Object update(@RequestBody Property property) {
+    public Object update(@RequestBody Property property) throws MyException {
         if (property == null || property.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         propertyService.update(property);
@@ -59,9 +62,9 @@ public class PropertyController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Object delete(@RequestBody Property property) {
+    public Object delete(@RequestBody Property property) throws MyException {
         if (property == null || property.getId() == null) {
-            // TODO
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
         propertyService.delete(property.getId());
