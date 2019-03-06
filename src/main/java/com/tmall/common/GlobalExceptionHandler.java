@@ -13,6 +13,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({Exception.class})
     @ResponseBody
     protected Object ExceptionHandler(Exception ex) {
+        ex.printStackTrace();
+
         Map map = new HashMap();
         if (ex instanceof MyException) {
             MyException me = (MyException) ex;
