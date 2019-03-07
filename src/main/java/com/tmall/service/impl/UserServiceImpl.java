@@ -1,5 +1,8 @@
 package com.tmall.service.impl;
 
+import com.tmall.common.CodeMessageDef;
+import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.MyException;
 import com.tmall.dao.UserMapper;
 import com.tmall.entity.User;
 import com.tmall.service.UserService;
@@ -28,7 +31,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void add(User user) {
+    public void add(User user) throws MyException {
+        User userInDb = userMapper.getUserByUserName(user.getUsername());
+        if (userInDb != null) {
+            throw new MyException(CodeMessageDef.USER_ALREADY_EXISTS_ERROR);
+        }
         userMapper.insertSelective(user);
     }
 
@@ -40,5 +47,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public void delete(Integer id) {
         userMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public User getUserByUserName(String userName) {
+        return userMapper.getUserByUserName(userName);
     }
 }

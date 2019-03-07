@@ -1,29 +1,30 @@
 package com.tmall;
 
-import com.tmall.entity.Product;
-import com.tmall.service.ProductService;
+import com.tmall.common.MyException;
+import com.tmall.entity.User;
+import com.tmall.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TmallApplicationTests {
 
 	@Autowired
-	ProductService productService;
+	UserService userService;
 
 	@Test
-	public void contextLoads() {
-		Product product = productService.get(1);
-		System.out.println(product.getId());
-		System.out.println(product.getPrice());
-		System.out.println(product.getStock());
-		System.out.println(product.getCid());
+	public void contextLoads() throws MyException {
+//		User user = userService.getUserByUserName("向本国1");
+//		System.out.println(user);
+
+		User user = new User();
+		user.setUsername("向本");
+		userService.add(user);
 	}
 
 }
