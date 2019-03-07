@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping(value = "property")
+@RequestMapping(value = "/property")
 public class PropertyController extends GlobalExceptionHandler {
     @Autowired
     PropertyService propertyService;

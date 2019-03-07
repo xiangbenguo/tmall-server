@@ -14,7 +14,7 @@ import java.util.List;
  * Created by yangxiong on 2019/2/17.
  */
 @RestController
-@RequestMapping(value = "product")
+@RequestMapping(value = "/product")
 public class ProductController extends GlobalExceptionHandler {
 
     @Autowired

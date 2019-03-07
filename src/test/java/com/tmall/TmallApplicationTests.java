@@ -19,8 +19,11 @@ public class TmallApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		List<Product> list = productService.list();
-		System.out.print(list);
+		Product product = productService.get(1);
+		System.out.println(product.getId());
+		System.out.println(product.getPrice());
+		System.out.println(product.getStock());
+		System.out.println(product.getCid());
 	}
 
 }

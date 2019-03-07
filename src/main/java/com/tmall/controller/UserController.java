@@ -15,7 +15,7 @@ import java.util.List;
  * Created by yangxiong on 2019/3/3.
  */
 @RestController
-@RequestMapping(value = "user")
+@RequestMapping(value = "/user")
 public class UserController extends GlobalExceptionHandler {
     @Autowired
     UserService userService;

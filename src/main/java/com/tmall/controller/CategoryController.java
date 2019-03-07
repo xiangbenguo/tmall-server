@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping(value = "category")
+@RequestMapping(value = "/category")
 public class CategoryController extends GlobalExceptionHandler {
     @Autowired
     CategoryService categoryService;
@@ -22,6 +22,7 @@ public class CategoryController extends GlobalExceptionHandler {
      * 分类列表
      * @return
      */
+    @CrossOrigin("*")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Object list() {
         List<Category> list = categoryService.list();

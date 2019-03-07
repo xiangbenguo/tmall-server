@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "orderItemService")
+@RequestMapping(value = "/orderItemService")
 public class OrderItemController extends GlobalExceptionHandler {
 
     @Autowired

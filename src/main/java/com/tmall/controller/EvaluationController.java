@@ -9,11 +9,10 @@ import com.tmall.service.EvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.ValueExp;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "evaluation")
+@RequestMapping(value = "/evaluation")
 public class EvaluationController extends GlobalExceptionHandler {
     @Autowired
     EvaluationService evaluationService;

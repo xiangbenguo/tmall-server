@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "propertyValue")
+@RequestMapping(value = "/propertyValue")
 public class PropertyValueController extends GlobalExceptionHandler {
 
     @Autowired

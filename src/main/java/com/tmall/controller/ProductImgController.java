@@ -15,7 +15,7 @@ import java.util.List;
  * Created by yangxiong on 2019/3/3.
  */
 @RestController
-@RequestMapping(value = "productImg")
+@RequestMapping(value = "/productImg")
 public class ProductImgController extends GlobalExceptionHandler {
     @Autowired
     ProductImgService productImgService;

@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping(value = "order")
+@RequestMapping(value = "/order")
 public class OrderController extends GlobalExceptionHandler {
     @Autowired
     OrderService orderService;
