@@ -24,6 +24,7 @@ public class UserController extends GlobalExceptionHandler {
      * 产品列表
      * @return
      */
+    @CrossOrigin("*")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Object list() {
         List<User> list = userService.list();
