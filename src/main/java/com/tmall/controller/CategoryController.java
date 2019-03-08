@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/category")
-public class CategoryController extends GlobalExceptionHandler {
+public class CategoryController extends GlobalHandler {
     @Autowired
     CategoryService categoryService;
 

@@ -1,7 +1,7 @@
 package com.tmall.controller;
 
 import com.tmall.common.CodeMessageDef;
-import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.GlobalHandler;
 import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.Evaluation;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/evaluation")
-public class EvaluationController extends GlobalExceptionHandler {
+public class EvaluationController extends GlobalHandler {
     @Autowired
     EvaluationService evaluationService;
 

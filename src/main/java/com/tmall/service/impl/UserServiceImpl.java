@@ -1,7 +1,6 @@
 package com.tmall.service.impl;
 
 import com.tmall.common.CodeMessageDef;
-import com.tmall.common.GlobalExceptionHandler;
 import com.tmall.common.MyException;
 import com.tmall.dao.UserMapper;
 import com.tmall.entity.User;

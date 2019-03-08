@@ -1,7 +1,7 @@
 package com.tmall.controller;
 
 import com.tmall.common.CodeMessageDef;
-import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.GlobalHandler;
 import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.Order;
@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/order")
-public class OrderController extends GlobalExceptionHandler {
+public class OrderController extends GlobalHandler {
     @Autowired
     OrderService orderService;
 
@@ -82,17 +82,12 @@ public class OrderController extends GlobalExceptionHandler {
 
     /**
      * 获取用户订单
-     * @param uid
      * @return
      * @throws MyException
      */
     @RequestMapping(value = "/getUserOrder", method = RequestMethod.GET)
-    public Object getUserOrder(@RequestParam(required = false) Integer uid) throws MyException {
-        if (uid == null) {
-            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
-        }
-
-        List<Order> orders = orderService.getUserOrder(uid);
+    public Object getUserOrder() throws MyException {
+        List<Order> orders = orderService.getUserOrder(getUserId());
         return new ResultBean(orders);
     }
 }

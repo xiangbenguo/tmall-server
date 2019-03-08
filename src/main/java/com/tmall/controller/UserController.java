@@ -1,7 +1,7 @@
 package com.tmall.controller;
 
 import com.tmall.common.CodeMessageDef;
-import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.GlobalHandler;
 import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.User;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/user")
-public class UserController extends GlobalExceptionHandler {
+public class UserController extends GlobalHandler {
     @Autowired
     UserService userService;
 

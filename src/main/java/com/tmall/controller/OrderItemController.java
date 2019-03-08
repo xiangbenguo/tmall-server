@@ -1,8 +1,7 @@
 package com.tmall.controller;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 import com.tmall.common.CodeMessageDef;
-import com.tmall.common.GlobalExceptionHandler;
+import com.tmall.common.GlobalHandler;
 import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.OrderItem;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/orderItemService")
-public class OrderItemController extends GlobalExceptionHandler {
+public class OrderItemController extends GlobalHandler {
 
     @Autowired
     OrderItemServiice orderItemServiice;
