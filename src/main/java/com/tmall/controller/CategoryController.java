@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by yangxiong on 2019/3/2.
  */
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/category")
 public class CategoryController extends GlobalHandler {
@@ -22,7 +22,7 @@ public class CategoryController extends GlobalHandler {
      * 分类列表
      * @return
      */
-    @CrossOrigin("*")
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Object list() {
         List<Category> list = categoryService.list();

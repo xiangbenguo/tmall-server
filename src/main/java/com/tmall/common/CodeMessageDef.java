@@ -16,6 +16,6 @@ public class CodeMessageDef {
      * 用户相关错误 101-200
      */
     public static final CodeMessage USER_ALREADY_EXISTS_ERROR = new CodeMessage(101,"用户已存在");
-    public static final CodeMessage USERNAME_ERROR = new CodeMessage(102,"用户名错误");
-    public static final CodeMessage USERPASSWORD_ERROR = new CodeMessage(103,"用户密码错误");
+    public static final CodeMessage USER_NAME_ERROR = new CodeMessage(102,"用户名错误");
+    public static final CodeMessage USER_PASSWORD_ERROR = new CodeMessage(103,"用户密码错误");
 }

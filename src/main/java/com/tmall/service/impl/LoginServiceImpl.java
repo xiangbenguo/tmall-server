@@ -1,6 +1,5 @@
 package com.tmall.service.impl;
 
-import com.tmall.common.CodeMessage;
 import com.tmall.common.CodeMessageDef;
 import com.tmall.common.MyException;
 import com.tmall.dao.UserMapper;
@@ -24,13 +23,14 @@ public class LoginServiceImpl implements LoginService {
         }
 
         User userInDB = userMapper.getUserByUserName(user.getUsername());
-        if (StringUtils.isEmpty(userInDB.getUsername())) {
-            throw new MyException(CodeMessageDef.USERNAME_ERROR);
+        if (userInDB == null) {
+            throw new MyException(CodeMessageDef.USER_NAME_ERROR);
         }
+
 
         if (StringUtils.isEmpty(userInDB.getPassword())
                 || !userInDB.getPassword().equals(user.getPassword())) {
-            throw new MyException(CodeMessageDef.USERPASSWORD_ERROR);
+            throw new MyException(CodeMessageDef.USER_PASSWORD_ERROR);
         }
 
         return userInDB;
