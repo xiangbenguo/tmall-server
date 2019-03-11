@@ -41,4 +41,9 @@ public class ProductServiceImpl implements ProductService {
     public void delete(Integer id) {
         productMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<Product> getCidList(Integer cid) {
+        return productMapper.getCidList(cid);
+    }
 }

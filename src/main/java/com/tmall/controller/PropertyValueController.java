@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/propertyValue")
 public class PropertyValueController extends GlobalHandler {
@@ -61,6 +62,26 @@ public class PropertyValueController extends GlobalHandler {
         }
 
         propertyValueService.delete(propertyValue.getId());
+        return new ResultBean();
+    }
+
+    @RequestMapping(value = "getPidValueList", method = RequestMethod.GET)
+    public Object getPidValueList(@RequestParam Integer pid) throws MyException {
+        if (pid == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+
+        List<PropertyValue> list  = propertyValueService.getPidValueList(pid);
+        return new ResultBean(list);
+    }
+
+    @RequestMapping(value = "deletePidList", method = RequestMethod.POST)
+    public Object deletePidList(@RequestBody PropertyValue propertyValue) throws MyException {
+        if (propertyValue == null || propertyValue.getpid() == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+
+        propertyValueService.deletePidList(propertyValue.getpid());
         return new ResultBean();
     }
 }

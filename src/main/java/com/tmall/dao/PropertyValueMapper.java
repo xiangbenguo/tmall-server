@@ -19,4 +19,8 @@ public interface PropertyValueMapper {
     int updateByPrimaryKey(PropertyValue record);
 
     List<PropertyValue> list();
+
+    List<PropertyValue> getPidValueList(Integer pid);
+
+    void deletePidList(Integer id);
 }

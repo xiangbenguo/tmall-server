@@ -14,4 +14,8 @@ public interface PropertyValueService {
     void update(PropertyValue propertyValue);
 
     void delete(Integer id);
+
+    List<PropertyValue> getPidValueList(Integer pid);
+
+    void deletePidList(Integer id);
 }

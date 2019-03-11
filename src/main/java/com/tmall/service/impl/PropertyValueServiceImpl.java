@@ -38,4 +38,14 @@ public class PropertyValueServiceImpl implements PropertyValueService {
     public void delete(Integer id) {
         propertyValueMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<PropertyValue> getPidValueList(Integer pid) {
+        return propertyValueMapper.getPidValueList(pid);
+    }
+
+    @Override
+    public void deletePidList(Integer id) {
+        propertyValueMapper.deletePidList(id);
+    }
 }

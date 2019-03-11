@@ -93,4 +93,14 @@ public class ProductController extends GlobalHandler {
         productService.delete(product.getId());
         return new ResultBean();
     }
+
+    @RequestMapping(value = "getCidList", method = RequestMethod.GET)
+    public Object getCidList (@RequestParam (required = false) Integer cid) throws MyException {
+        if (cid == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+
+        List<Product> list = productService.getCidList(cid);
+        return new ResultBean(list);
+    }
 }

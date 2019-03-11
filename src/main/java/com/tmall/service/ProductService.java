@@ -17,4 +17,6 @@ public interface ProductService {
     void update(Product product);
 
     void delete(Integer id);
+
+    List<Product> getCidList(Integer cid);
 }

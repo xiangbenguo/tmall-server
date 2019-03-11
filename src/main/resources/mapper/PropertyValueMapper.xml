@@ -5,11 +5,12 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="value" jdbcType="VARCHAR" property="value" />
     <result column="ptid" jdbcType="INTEGER" property="ptid" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, value, ptid, createTime, updateTime
+    id, value, ptid, pid, createTime, updateTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -21,14 +22,23 @@
       select <include refid="Base_Column_List" />
       from propertyvalue
     </select>
+    <select id="getPidValueList" resultType="com.tmall.entity.PropertyValue">
+      select <include refid="Base_Column_List" />
+      from propertyvalue
+      where pid = #{pid,jdbcType=INTEGER}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from propertyvalue
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deletePidList">
+    delete from propertyvalue
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.tmall.entity.PropertyValue">
-    insert into propertyvalue (id, value, ptid, 
+    insert into propertyvalue (id, value, ptid, pid,
       createTime, updateTime)
-    values (#{id,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}, #{ptid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}, #{ptid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER},
       #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.tmall.entity.PropertyValue">
@@ -42,6 +52,9 @@
       </if>
       <if test="ptid != null">
         ptid,
+      </if>
+      <if test="pid != null">
+        pid,
       </if>
       <if test="createtime != null">
         createTime,
@@ -60,6 +73,9 @@
       <if test="ptid != null">
         #{ptid,jdbcType=INTEGER},
       </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
       </if>
@@ -77,6 +93,9 @@
       <if test="ptid != null">
         ptid = #{ptid,jdbcType=INTEGER},
       </if>
+      <if test="pid != null">
+        pid,
+      </if>
       <if test="createtime != null">
         createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
@@ -90,6 +109,7 @@
     update propertyvalue
     set value = #{value,jdbcType=VARCHAR},
       ptid = #{ptid,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
