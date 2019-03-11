@@ -20,4 +20,6 @@ public interface PropertyMapper {
     int updateByPrimaryKey(Property record);
 
     List<Property> list();
+
+    List<Property> getCidList(Integer cid);
 }

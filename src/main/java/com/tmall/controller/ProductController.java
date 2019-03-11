@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by yangxiong on 2019/2/17.
  */
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/product")
 public class ProductController extends GlobalHandler {
@@ -91,5 +92,15 @@ public class ProductController extends GlobalHandler {
 
         productService.delete(product.getId());
         return new ResultBean();
+    }
+
+    @RequestMapping(value = "getCidList", method = RequestMethod.GET)
+    public Object getCidList (@RequestParam (required = false) Integer cid) throws MyException {
+        if (cid == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+
+        List<Product> list = productService.getCidList(cid);
+        return new ResultBean(list);
     }
 }

@@ -14,6 +14,11 @@ public class PropertyValue {
     private String value;
 
     /**
+     *
+     */
+    private Integer pid;
+
+    /**
      * 
      */
     private Integer ptid;
@@ -58,6 +63,22 @@ public class PropertyValue {
      */
     public void setValue(String value) {
         this.value = value == null ? null : value.trim();
+    }
+
+    /**
+     *
+     * @return pid
+     */
+    public Integer getpid() {
+        return pid;
+    }
+
+    /**
+     *
+     * @param pid
+     */
+    public void setpid(Integer pid) {
+        this.pid = pid;
     }
 
     /**

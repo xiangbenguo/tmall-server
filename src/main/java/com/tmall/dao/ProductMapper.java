@@ -19,4 +19,6 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
     List<Product> list();
+
+    List<Product> getCidList(Integer cid);
 }

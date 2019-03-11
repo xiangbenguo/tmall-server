@@ -7,13 +7,12 @@ import com.tmall.entity.User;
 import com.tmall.service.LoginService;
 import com.tmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
 @RestController
 @RequestMapping("/login")
 public class LoginController extends GlobalHandler {
@@ -37,7 +36,7 @@ public class LoginController extends GlobalHandler {
      * 获取当前登录的用户
      * @return
      */
-    @RequestMapping(value = "getUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     public Object getSessionUser() throws MyException {
         User user = userService.get(getUserId());
         return new ResultBean(user);

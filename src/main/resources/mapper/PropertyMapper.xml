@@ -21,6 +21,11 @@
       SELECT <include refid="Base_Column_List"/>
       FROM property
     </select>
+    <select id="getCidList" resultType="com.tmall.entity.Property">
+      SELECT <include refid="Base_Column_List"/>
+      FROM property
+      WHERE cid = #{cid,jdbcType=INTEGER}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from property
     where id = #{id,jdbcType=INTEGER}

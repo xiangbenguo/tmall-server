@@ -23,6 +23,11 @@
       SELECT <include refid="Base_Column_List"/>
       FROM product
     </select>
+    <select id="getCidList" resultType="com.tmall.entity.Product">
+      SELECT <include refid="Base_Column_List"/>
+      from product
+      where cid = #{cid,jdbcType=INTEGER}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from product
     where id = #{id,jdbcType=INTEGER}

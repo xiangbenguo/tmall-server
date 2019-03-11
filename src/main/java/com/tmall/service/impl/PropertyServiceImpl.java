@@ -41,4 +41,9 @@ public class PropertyServiceImpl implements PropertyService {
     public void delete(Integer id) {
         propertyMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<Property> getCidList(Integer cid) {
+        return propertyMapper.getCidList(cid);
+    }
 }

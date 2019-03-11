@@ -23,9 +23,10 @@ public class LoginServiceImpl implements LoginService {
         }
 
         User userInDB = userMapper.getUserByUserName(user.getUsername());
-        if (StringUtils.isEmpty(userInDB.getUsername())) {
-            throw new MyException(CodeMessageDef.USERNAME_ERROR);
+        if (userInDB == null) {
+            throw new MyException(CodeMessageDef.USER_NAME_ERROR);
         }
+
 
         if (StringUtils.isEmpty(userInDB.getPassword())
                 || !userInDB.getPassword().equals(user.getPassword())) {

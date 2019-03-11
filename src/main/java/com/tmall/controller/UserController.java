@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by yangxiong on 2019/3/3.
  */
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/user")
 public class UserController extends GlobalHandler {
@@ -31,12 +32,9 @@ public class UserController extends GlobalHandler {
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public Object get(@RequestParam(required = false) Integer id) throws MyException {
-        if (id == null) {
-            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
-        }
+    public Object get() throws MyException {
 
-        User user = userService.get(id);
+        User user = userService.get(getUserId());
         return new ResultBean(user);
     }
 
