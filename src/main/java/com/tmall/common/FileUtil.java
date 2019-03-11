@@ -25,7 +25,7 @@ public class FileUtil {
      * @throws MyException
      */
     public String upload(MultipartFile file) throws MyException {
-        if (file.isEmpty()) {
+        if (file == null || file.isEmpty()) {
             throw new MyException(CodeMessageDef.FILE_IS_NULL);
         }
 

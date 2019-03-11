@@ -22,7 +22,7 @@ public class FileController extends GlobalHandler {
      * @throws MyException
      */
     @PostMapping("/upload")
-    public Object upload(@RequestParam("file") MultipartFile file) throws MyException {
+    public Object upload(@RequestParam(value = "file", required = false) MultipartFile file) throws MyException {
        return new ResultBean(util.upload(file));
     }
 }
