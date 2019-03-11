@@ -1,6 +1,5 @@
 package com.tmall.service.impl;
 
-import com.tmall.common.CodeMessage;
 import com.tmall.common.CodeMessageDef;
 import com.tmall.common.MyException;
 import com.tmall.dao.UserMapper;
@@ -30,7 +29,7 @@ public class LoginServiceImpl implements LoginService {
 
         if (StringUtils.isEmpty(userInDB.getPassword())
                 || !userInDB.getPassword().equals(user.getPassword())) {
-            throw new MyException(CodeMessageDef.USERPASSWORD_ERROR);
+            throw new MyException(CodeMessageDef.USER_PASSWORD_ERROR);
         }
 
         return userInDB;
