@@ -9,9 +9,6 @@ import com.tmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 @CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
 @RestController
 @RequestMapping("/login")
@@ -23,12 +20,26 @@ public class LoginController extends GlobalHandler {
     @Autowired
     UserService userService;
 
+    /**
+     * 登录
+     * @param user
+     * @return
+     * @throws MyException
+     */
     @RequestMapping(value = "/loginVerify",method = RequestMethod.POST)
-    public Object loginVerify(@RequestBody User user, HttpServletRequest request) throws MyException {
-        HttpSession session = request.getSession();
-
+    public Object loginVerify(@RequestBody User user) throws MyException {
         User userInDB = loginService.login(user);
-        session.setAttribute("user", userInDB);
+        sessionLogin(userInDB);
+        return new ResultBean();
+    }
+
+    /**
+     * 登出
+     * @return
+     */
+    @RequestMapping(value = "/logout",method = RequestMethod.POST)
+    public Object logout() {
+        sessionLogout();
         return new ResultBean();
     }
 
