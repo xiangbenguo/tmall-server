@@ -17,4 +17,6 @@ public interface PropertyService {
     void update(Property property);
 
     void delete(Integer id);
+
+    List<Property> getCidList(Integer cid);
 }

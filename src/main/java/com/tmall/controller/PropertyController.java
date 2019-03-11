@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by yangxiong on 2019/3/3.
  */
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/property")
 public class PropertyController extends GlobalHandler {
@@ -69,5 +69,15 @@ public class PropertyController extends GlobalHandler {
 
         propertyService.delete(property.getId());
         return new ResultBean();
+    }
+
+    @RequestMapping(value = "/getCidList", method = RequestMethod.GET)
+    public Object getCidList(@RequestParam (required = false) Integer cid) throws MyException {
+        if (cid == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+
+        List<Property> list = propertyService.getCidList(cid);
+        return new ResultBean(list);
     }
 }
