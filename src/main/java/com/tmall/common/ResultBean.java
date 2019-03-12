@@ -9,13 +9,15 @@ public class ResultBean {
     private Object data;
 
     public ResultBean() {
-        this.code = 200;
-        this.message = "操作成功";
+        CodeMessage cm = CodeMessageDef.SUCCESS;
+        this.code = cm.getCode();
+        this.message = cm.getMsg();
     }
 
     public ResultBean(Object data) {
-        this.code = 200;
-        this.message = "操作成功";
+        CodeMessage cm = CodeMessageDef.SUCCESS;
+        this.code = cm.getCode();
+        this.message = cm.getMsg();
         this.data = data;
     }
 
