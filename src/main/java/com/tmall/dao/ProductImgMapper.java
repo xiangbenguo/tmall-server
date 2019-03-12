@@ -19,4 +19,6 @@ public interface ProductImgMapper {
     int updateByPrimaryKey(ProductImg record);
 
     List<ProductImg> productImgList(Integer id);
+
+    List<ProductImg> getPidList(Integer pid);
 }

@@ -19,4 +19,6 @@ public interface ProductImgService {
     void delete(Integer id);
 
     List<ProductImg> getProductImg(Integer id);
+
+    List<ProductImg> getPidList(Integer pid);
 }

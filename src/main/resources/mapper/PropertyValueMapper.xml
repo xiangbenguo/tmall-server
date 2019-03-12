@@ -26,6 +26,7 @@
       select <include refid="Base_Column_List" />
       from propertyvalue
       where pid = #{pid,jdbcType=INTEGER}
+      order by ptid asc
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from propertyvalue

@@ -47,4 +47,9 @@ public class ProductImgServiceImpl implements ProductImgService {
     public List<ProductImg> getProductImg(Integer id) {
         return productImgMapper.productImgList(id);
 }
+
+    @Override
+    public List<ProductImg> getPidList(Integer pid) {
+        return productImgMapper.getPidList(pid);
+    }
 }

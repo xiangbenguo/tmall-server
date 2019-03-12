@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by yangxiong on 2019/3/3.
  */
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/productImg")
 public class ProductImgController extends GlobalHandler {
@@ -21,7 +22,7 @@ public class ProductImgController extends GlobalHandler {
     ProductImgService productImgService;
 
     /**
-     * 产品列表
+     * 图片列表
      * @return
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -45,12 +46,12 @@ public class ProductImgController extends GlobalHandler {
     }
 
     /**
-     * 添加产品
+     * 添加图片
      * @param productImg
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object add(@RequestBody ProductImg productImg, Integer status) throws MyException {
+    public Object add(@RequestBody ProductImg productImg) throws MyException {
         if (productImg == null) {
             throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
@@ -77,5 +78,15 @@ public class ProductImgController extends GlobalHandler {
 
         productImgService.delete(productImg.getId());
         return new ResultBean();
+    }
+
+    @RequestMapping(value = "/getPidList", method = RequestMethod.GET)
+    public Object getPidList (@RequestParam(required = false) Integer pid) throws MyException {
+        if (pid == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+
+        List<ProductImg> list = productImgService.getPidList(pid);
+        return new ResultBean(list);
     }
 }
