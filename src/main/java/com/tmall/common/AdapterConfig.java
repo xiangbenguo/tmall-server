@@ -1,9 +1,11 @@
 package com.tmall.common;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -17,6 +19,9 @@ public class AdapterConfig implements WebMvcConfigurer {
         return new LoginInterceptor();
     }
 
+    @Autowired
+    UploadFileConfig uploadFilePathConfig;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration addInterceptor = registry.addInterceptor(loginInterceptor());
@@ -27,5 +32,11 @@ public class AdapterConfig implements WebMvcConfigurer {
 
         //拦截配置
         addInterceptor.addPathPatterns("/**/**");
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler( "/upload/**")
+                .addResourceLocations("file:" + uploadFilePathConfig.getUploadFolder());
     }
 }

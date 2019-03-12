@@ -16,7 +16,7 @@ import java.util.Date;
 public class FileUtil {
 
     @Autowired
-    UploadFilePathConfig config;
+    UploadFileConfig config;
 
     /**
      * 上传文件
