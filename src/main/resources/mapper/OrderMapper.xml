@@ -10,15 +10,15 @@
     <result column="post" jdbcType="VARCHAR" property="post" />
     <result column="receiver" jdbcType="VARCHAR" property="receiver" />
     <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="payTime" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="payTime" jdbcType="VARCHAR" property="payTime" />
     <result column="phoneNumber" jdbcType="VARCHAR" property="phoneNumber" />
-    <result column="deliveryTime" jdbcType="TIMESTAMP" property="deliveryTime" />
-    <result column="confirmTime" jdbcType="TIMESTAMP" property="confirmTime" />
+    <result column="deliveryTime" jdbcType="VARCHAR" property="deliveryTime" />
+    <result column="confirmTime" jdbcType="VARCHAR" property="confirmTime" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, uid, pid status, amount, post, receiver, address, payTime, phoneNumber, deliveryTime, confirmTime, createTime, updateTime
+    id, uid, pid, status, amount, post, receiver, address, payTime, phoneNumber, deliveryTime, confirmTime, createTime, updateTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -45,12 +45,12 @@
       )
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
       #{amount,jdbcType=DECIMAL},  #{post,jdbcType=VARCHAR},  #{receiver,jdbcType=VARCHAR},
-       #{address,jdbcType=VARCHAR},  #{payTime,jdbcType=TIMESTAMP},
-        #{phoneNumber,jdbcType=VARCHAR},  #{deliveryTime,jdbcType=TIMESTAMP},
-         #{confirmTime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+       #{address,jdbcType=VARCHAR},  #{payTime,jdbcType=VARCHAR},
+        #{phoneNumber,jdbcType=VARCHAR},  #{deliveryTime,jdbcType=VARCHAR},
+         #{confirmTime,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.tmall.entity.Order">
+  <insert id="insertSelective" parameterType="com.tmall.entity.Order" useGeneratedKeys="true" keyProperty="id">
     insert into _order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -122,16 +122,16 @@
         #{address,jdbcType=VARCHAR},
       </if>
       <if test="payTime != null">
-        #{payTime,jdbcType=TIMESTAMP},
+        #{payTime,jdbcType=VARCHAR},
       </if>
       <if test="phoneNumber != null">
         #{phoneNumber,jdbcType=VARCHAR},
       </if>
       <if test="deliveryTime != null">
-        #{deliveryTime,jdbcType=TIMESTAMP},
+        #{deliveryTime,jdbcType=VARCHAR},
       </if>
       <if test="confirmTime != null">
-        #{confirmTime,jdbcType=TIMESTAMP},
+        #{confirmTime,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
@@ -166,16 +166,16 @@
         address = #{address,jdbcType=VARCHAR},
       </if>
       <if test="payTime != null">
-        payTime = #{payTime,jdbcType=TIMESTAMP},
+        payTime = #{payTime,jdbcType=VARCHAR},
       </if>
       <if test="phoneNumber != null">
         phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
       </if>
       <if test="deliveryTime != null">
-        deliveryTime = #{deliveryTime,jdbcType=TIMESTAMP},
+        deliveryTime = #{deliveryTime,jdbcType=VARCHAR},
       </if>
       <if test="confirmTime != null">
-        confirmTime = #{confirmTime,jdbcType=TIMESTAMP},
+        confirmTime = #{confirmTime,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null">
         createTime = #{createtime,jdbcType=TIMESTAMP},

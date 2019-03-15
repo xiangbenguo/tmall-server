@@ -46,7 +46,7 @@ public class Order {
     /**
      *
      */
-    private Date payTime;
+    private String payTime;
 
     /**
      *
@@ -194,11 +194,11 @@ public class Order {
         this.address = address;
     }
 
-    public Date getPayTime() {
+    public String getPayTime() {
         return payTime;
     }
 
-    public void setPayTime(Date payTime) {
+    public void setPayTime(String payTime) {
         this.payTime = payTime;
     }
 
