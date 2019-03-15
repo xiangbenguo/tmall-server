@@ -5,6 +5,7 @@ import com.tmall.common.CodeMessageDef;
 import com.tmall.common.MyException;
 import com.tmall.common.ResultBean;
 import com.tmall.entity.Product;
+import com.tmall.entity.tool.ProductQuery;
 import com.tmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,10 @@ public class ProductController extends GlobalHandler {
      * @return
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Object list() {
-        List<Product> list = productService.list();
+    public Object list(@RequestParam(required = false) String keyword) {
+        ProductQuery query = new ProductQuery();
+        query.setKeyword(keyword);
+        List<Product> list = productService.list(query);
         return new ResultBean(list);
     }
 

@@ -24,6 +24,8 @@
     <select id="list" resultType="com.tmall.entity.Product">
       SELECT <include refid="Base_Column_List"/>
       FROM product
+      WHERE 1 = 1
+      AND name LIKE concat('%',#{query.keyword},'%')
     </select>
     <select id="getCidList" resultType="com.tmall.entity.Product">
       SELECT <include refid="Base_Column_List"/>

@@ -1,6 +1,7 @@
 package com.tmall.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Product {
     /**
@@ -47,6 +48,16 @@ public class Product {
      * 
      */
     private Date updatetime;
+
+    private List<ProductImg> imgs;
+
+    public List<ProductImg> getImgs() {
+        return imgs;
+    }
+
+    public void setImgs(List<ProductImg> imgs) {
+        this.imgs = imgs;
+    }
 
     /**
      * 

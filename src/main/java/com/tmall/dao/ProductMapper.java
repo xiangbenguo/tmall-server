@@ -2,6 +2,8 @@ package com.tmall.dao;
 
 
 import com.tmall.entity.Product;
+import com.tmall.entity.tool.ProductQuery;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,7 +20,7 @@ public interface ProductMapper {
 
     int updateByPrimaryKey(Product record);
 
-    List<Product> list();
+    List<Product> list(@Param("query")ProductQuery query);
 
     List<Product> getCidList(Integer cid);
 }

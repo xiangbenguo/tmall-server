@@ -27,6 +27,17 @@
       from productimg
       where pid = #{pid,jdbcType=INTEGER}
     </select>
+    <select id="listByPids" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/>
+      from productimg
+      where 1 = 1
+      <if test="pids != null and pids.size > 0">
+        and pid in
+        <foreach collection="pids" item="pid" separator="," open="(" close=")">
+          #{pid}
+        </foreach>
+      </if>
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from productimg
     where id = #{id,jdbcType=INTEGER}

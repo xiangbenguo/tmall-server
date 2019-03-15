@@ -1,6 +1,7 @@
 package com.tmall.service;
 
 import com.tmall.entity.Product;
+import com.tmall.entity.tool.ProductQuery;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * Created by yangxiong on 2019/2/17.
  */
 public interface ProductService {
-    List<Product> list();
+    List<Product> list(ProductQuery query);
 
     Product get(Integer id);
 

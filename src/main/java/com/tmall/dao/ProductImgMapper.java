@@ -2,6 +2,7 @@ package com.tmall.dao;
 
 
 import com.tmall.entity.ProductImg;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface ProductImgMapper {
     List<ProductImg> productImgList(Integer id);
 
     List<ProductImg> getPidList(Integer pid);
+
+    List<ProductImg> listByPids(@Param("pids") List<Integer> pids);
 }
