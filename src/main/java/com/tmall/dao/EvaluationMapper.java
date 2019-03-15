@@ -21,5 +21,5 @@ public interface EvaluationMapper {
 
     List<Evaluation> list();
 
-    List<Evaluation> getPlist(Integer pid);
+    List<Evaluation> getPidList(Integer pid);
 }

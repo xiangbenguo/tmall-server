@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by yangxiong on 2019/2/17.
  */
-@CrossOrigin("*")
+@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
 @RestController
 @RequestMapping(value = "/product")
 public class ProductController extends GlobalHandler {

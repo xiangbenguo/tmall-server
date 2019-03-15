@@ -6,12 +6,14 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="price" jdbcType="REAL" property="price" />
     <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="monthSales" jdbcType="INTEGER" property="monthSales" />
+    <result column="evaluationNum" jdbcType="INTEGER" property="evaluationNum" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, price, stock, cid, createTime, updateTime
+    id, name, price, stock, monthSales, evaluationNum, cid, createTime, updateTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -34,10 +36,10 @@
   </delete>
   <insert id="insert" parameterType="com.tmall.entity.Product">
     insert into product (id, name, price, 
-      stock, cid, createTime, 
+      stock, monthSales, evaluationNum, cid, createTime,
       updateTime)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
-      #{stock,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{stock,jdbcType=INTEGER}, #{monthSales,jdbcType=INTEGER}, #{evaluationNum,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP},
       #{updatetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.tmall.entity.Product">
@@ -54,6 +56,12 @@
       </if>
       <if test="stock != null">
         stock,
+      </if>
+      <if test="monthSales != null">
+        monthSales,
+      </if>
+      <if test="evaluationNum != null">
+        evaluationNum,
       </if>
       <if test="cid != null">
         cid,
@@ -78,6 +86,12 @@
       <if test="stock != null">
         #{stock,jdbcType=INTEGER},
       </if>
+      <if test="monthSales != null">
+        #{monthSales,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationNum != null">
+        #{evaluationNum,jdbcType=INTEGER},
+      </if>
       <if test="cid != null">
         #{cid,jdbcType=INTEGER},
       </if>
@@ -101,6 +115,12 @@
       <if test="stock != null">
         stock = #{stock,jdbcType=INTEGER},
       </if>
+      <if test="monthSales != null">
+        monthSales = #{monthSales,jdbcType=INTEGER},
+      </if>
+      <if test="evaluationNum != null">
+        evaluationNum = #{evaluationNum,jdbcType=INTEGER},
+      </if>
       <if test="cid != null">
         cid = #{cid,jdbcType=INTEGER},
       </if>
@@ -118,6 +138,8 @@
     set name = #{name,jdbcType=VARCHAR},
       price = #{price,jdbcType=REAL},
       stock = #{stock,jdbcType=INTEGER},
+      monthSales = #{monthSales,jdbcType=INTEGER},
+      evaluationNum = #{evaluationNum,jdbcType=INTEGER},
       cid = #{cid,jdbcType=INTEGER},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP}

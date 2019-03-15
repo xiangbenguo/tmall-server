@@ -43,7 +43,7 @@ public class EvaluationServiceImpl implements EvaluationService {
     }
 
     @Override
-    public List<Evaluation> getPlist(Integer pid) {
-        return evaluationMapper.getPlist(pid);
+    public List<Evaluation> getPidList(Integer pid) {
+        return evaluationMapper.getPidList(pid);
     }
 }

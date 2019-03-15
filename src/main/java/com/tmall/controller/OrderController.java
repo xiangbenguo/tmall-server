@@ -15,6 +15,7 @@ import java.util.List;
  * Created by yangxiong on 2019/3/3.
  */
 
+@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
 @RestController
 @RequestMapping(value = "/order")
 public class OrderController extends GlobalHandler {

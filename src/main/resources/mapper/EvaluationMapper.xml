@@ -5,6 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
   </resultMap>
@@ -12,7 +13,7 @@
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, uid, pid, createTime, updateTime
+    id, uid, pid, content, createTime, updateTime
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -29,18 +30,20 @@
       SELECT <include refid="Base_Column_List"/>
       FROM evaluation
     </select>
-  <select id="getPlist" resultType="com.tmall.entity.Evaluation">
-    select
+  <select id="getPidList" resultType="com.tmall.entity.Evaluation">
+    SELECT <include refid="Base_Column_List"/>
+    FROM evaluation
+    WHERE pid = #{pid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from evaluation
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.tmall.entity.Evaluation">
-    insert into evaluation (id, uid, pid, 
+    insert into evaluation (id, uid, pid,
       createTime, updateTime, content
       )
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER},
       #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -121,6 +124,7 @@
     update evaluation
     set uid = #{uid,jdbcType=INTEGER},
       pid = #{pid,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

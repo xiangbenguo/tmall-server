@@ -24,6 +24,16 @@ public class Product {
     private Integer stock;
 
     /**
+     *
+     */
+    private Integer monthSales;
+
+    /**
+     *
+     */
+    private Integer evaluationNum;
+
+    /**
      * 
      */
     private Integer cid;
@@ -95,11 +105,43 @@ public class Product {
     }
 
     /**
-     * 
-     * @param stock 
+     *
+     * @param stock
      */
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    /**
+     *
+     * @param monthSales
+     */
+    public void setMonthSales(Integer monthSales) {
+        this.monthSales = monthSales;
+    }
+
+    /**
+     *
+     * @return monthSales
+     */
+    public Integer getMonthSales() {
+        return monthSales;
+    }
+
+    /**
+     *
+     * @param evaluationNum
+     */
+    public void setEvaluationNum(Integer evaluationNum) {
+        this.evaluationNum = evaluationNum;
+    }
+
+    /**
+     *
+     * @return evaluationNum
+     */
+    public Integer getEvaluationNum() {
+        return evaluationNum;
     }
 
     /**

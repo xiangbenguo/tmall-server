@@ -4,13 +4,21 @@
   <resultMap id="BaseResultMap" type="com.tmall.entity.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="payTime" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="phoneNumber" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="deliveryTime" jdbcType="TIMESTAMP" property="deliveryTime" />
+    <result column="confirmTime" jdbcType="TIMESTAMP" property="confirmTime" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, uid, status, amount, createTime, updateTime
+    id, uid, pid status, amount, post, receiver, address, payTime, phoneNumber, deliveryTime, confirmTime, createTime, updateTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -32,11 +40,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.tmall.entity.Order">
-    insert into _order (id, uid, status, 
-      amount, createTime, updateTime
+    insert into _order (id, uid, pid status,
+      amount, post, receiver, address, payTime, phoneNumber, deliveryTime, confirmTime, createTime, updateTime
       )
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{amount,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+      #{amount,jdbcType=DECIMAL},  #{post,jdbcType=VARCHAR},  #{receiver,jdbcType=VARCHAR},
+       #{address,jdbcType=VARCHAR},  #{payTime,jdbcType=TIMESTAMP},
+        #{phoneNumber,jdbcType=VARCHAR},  #{deliveryTime,jdbcType=TIMESTAMP},
+         #{confirmTime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.tmall.entity.Order">
@@ -48,11 +59,35 @@
       <if test="uid != null">
         uid,
       </if>
+      <if test="pid != null">
+        pid,
+      </if>
       <if test="status != null">
         status,
       </if>
       <if test="amount != null">
         amount,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+      <if test="receiver != null">
+        receiver,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="payTime != null">
+        payTime,
+      </if>
+      <if test="phoneNumber != null">
+        phoneNumber,
+      </if>
+      <if test="deliveryTime != null">
+        deliveryTime,
+      </if>
+      <if test="confirmTime != null">
+        confirmTime,
       </if>
       <if test="createtime != null">
         createTime,
@@ -68,11 +103,35 @@
       <if test="uid != null">
         #{uid,jdbcType=INTEGER},
       </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
       <if test="amount != null">
         #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTime != null">
+        #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null">
+        #{confirmTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
@@ -88,11 +147,35 @@
       <if test="uid != null">
         uid = #{uid,jdbcType=INTEGER},
       </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
       <if test="amount != null">
         amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="post != null">
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null">
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null">
+        payTime = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phoneNumber != null">
+        phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryTime != null">
+        deliveryTime = #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null">
+        confirmTime = #{confirmTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createtime != null">
         createTime = #{createtime,jdbcType=TIMESTAMP},
@@ -106,8 +189,16 @@
   <update id="updateByPrimaryKey" parameterType="com.tmall.entity.Order">
     update _order
     set uid = #{uid,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       amount = #{amount,jdbcType=DECIMAL},
+      post = #{post,jdbcType=VARCHAR},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      payTime = #{payTime,jdbcType=TIMESTAMP},
+      phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
+      deliveryTime = #{deliveryTime,jdbcType=TIMESTAMP},
+      confirmTime = #{confirmTime,jdbcType=TIMESTAMP},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

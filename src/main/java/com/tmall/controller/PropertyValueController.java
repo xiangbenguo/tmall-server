@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
+@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
 @RestController
 @RequestMapping(value = "/propertyValue")
 public class PropertyValueController extends GlobalHandler {

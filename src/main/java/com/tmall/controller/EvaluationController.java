@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
 @RestController
 @RequestMapping(value = "/evaluation")
 public class EvaluationController extends GlobalHandler {
@@ -57,6 +58,16 @@ public class EvaluationController extends GlobalHandler {
         }
         evaluationService.delete(evaluation.getId());
         return new ResultBean();
+    }
+
+    @RequestMapping(value = "getPidList", method = RequestMethod.GET)
+    public Object getPidList(@RequestParam(required = false) Integer pid) throws MyException {
+        if (pid == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+
+        List<Evaluation> list = evaluationService.getPidList(pid);
+        return new ResultBean(list);
     }
 
 }

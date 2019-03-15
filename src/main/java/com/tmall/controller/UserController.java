@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by yangxiong on 2019/3/3.
  */
-@CrossOrigin("*")
+@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
 @RestController
 @RequestMapping(value = "/user")
 public class UserController extends GlobalHandler {

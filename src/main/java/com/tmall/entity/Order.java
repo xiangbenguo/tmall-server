@@ -14,6 +14,11 @@ public class Order {
     private Integer uid;
 
     /**
+     *
+     */
+    private Integer pid;
+
+    /**
      * 
      */
     private Integer status;
@@ -22,6 +27,42 @@ public class Order {
      * 
      */
     private Long amount;
+
+    /**
+     *
+     */
+    private String post;
+
+    /**
+     *
+     */
+    private String receiver;
+
+    /**
+     *
+     */
+    private String address;
+
+    /**
+     *
+     */
+    private Date payTime;
+
+    /**
+     *
+     */
+    private String phoneNumber;
+
+    /**
+     *
+     */
+    private Date deliveryTime;
+
+    /**
+     *
+     */
+    private Date confirmTime;
+
 
     /**
      * 
@@ -127,5 +168,69 @@ public class Order {
      */
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
+    }
+
+    public String getPost() {
+        return post;
+    }
+
+    public void setPost(String post) {
+        this.post = post;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getPayTime() {
+        return payTime;
+    }
+
+    public void setPayTime(Date payTime) {
+        this.payTime = payTime;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Date getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(Date deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
+    public Date getConfirmTime() {
+        return confirmTime;
+    }
+
+    public void setConfirmTime(Date confirmTime) {
+        this.confirmTime = confirmTime;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 }
