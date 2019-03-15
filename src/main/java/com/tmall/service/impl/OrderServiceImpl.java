@@ -6,6 +6,8 @@ import com.tmall.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,13 +30,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void add(Order order) {
+    public Order add(Order order) {
         orderMapper.insertSelective(order);
+
+        return orderMapper.selectByPrimaryKey(order.getId());
     }
 
     @Override
-    public void update(Order productImg) {
-        orderMapper.updateByPrimaryKeySelective(productImg);
+    public void update(Order order) {
+        Date date=new Date();
+        SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        order.setPayTime(dateFormat.format(date));
+        orderMapper.updateByPrimaryKeySelective(order);
     }
 
     @Override

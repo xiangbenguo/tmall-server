@@ -57,8 +57,8 @@ public class OrderController extends GlobalHandler {
             throw new MyException(CodeMessageDef.PARAMETER_ERROR);
         }
 
-        orderService.add(order);
-        return new ResultBean();
+        Order _order = orderService.add(order);
+        return new ResultBean(_order);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)

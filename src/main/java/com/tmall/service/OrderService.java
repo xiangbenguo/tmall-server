@@ -12,7 +12,7 @@ public interface OrderService {
 
     Order get(Integer id);
 
-    void add(Order order);
+    Order add(Order order);
 
     void update(Order productImg);
 
