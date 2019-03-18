@@ -14,9 +14,11 @@ public interface OrderService {
 
     Order add(Order order);
 
-    void update(Order productImg);
+    void update(Order order);
 
     void delete(Integer id);
 
     List<Order> getUserOrder(Integer uid);
+
+    void pay(Order order);
 }

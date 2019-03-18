@@ -38,9 +38,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void update(Order order) {
-        Date date=new Date();
-        SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-        order.setPayTime(dateFormat.format(date));
         orderMapper.updateByPrimaryKeySelective(order);
     }
 
@@ -52,5 +49,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getUserOrder(Integer uid) {
         return orderMapper.getUserOrder(uid);
+    }
+
+    @Override
+    public void pay(Order order) {
+        Date date=new Date();
+        SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        order.setPayTime(dateFormat.format(date));
+        orderMapper.updateByPrimaryKeySelective(order);
     }
 }

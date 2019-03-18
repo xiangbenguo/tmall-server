@@ -91,4 +91,14 @@ public class OrderController extends GlobalHandler {
         List<Order> orders = orderService.getUserOrder(getUserId());
         return new ResultBean(orders);
     }
+
+    @RequestMapping(value = "/pay", method = RequestMethod.POST)
+    public Object pay(@RequestBody Order order) throws MyException {
+
+        if (order == null || order.getId() == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+        orderService.pay(order);
+        return new ResultBean();
+    }
 }

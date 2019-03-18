@@ -3,9 +3,9 @@ package com.tmall.entity;
 import java.util.Date;
 
 public class Order {
-    /**
-     * 
-     */
+
+    public static final int STATUS_CREATED = 1;
+
     private Integer id;
 
     /**

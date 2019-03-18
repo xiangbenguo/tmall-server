@@ -3,10 +3,7 @@ package com.tmall.common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * Created by yangxiong on 2019/3/11.
@@ -38,5 +35,11 @@ public class AdapterConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler( "/upload/**")
                 .addResourceLocations("file:" + uploadFilePathConfig.getUploadFolder());
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("*/**").allowCredentials(true).allowedHeaders("**").allowedMethods("**")
+                .allowedOrigins("**");
     }
 }
