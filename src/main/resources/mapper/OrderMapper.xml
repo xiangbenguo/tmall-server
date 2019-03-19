@@ -35,7 +35,12 @@
       from _order
       where uid = #{uid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="userOrderStatus" resultType="com.tmall.entity.Order">
+      SELECT <include refid="Base_Column_List"/>
+      from _order
+      where uid = #{uid,jdbcType=INTEGER} AND status = #{status,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from _order
     where id = #{id,jdbcType=INTEGER}
   </delete>

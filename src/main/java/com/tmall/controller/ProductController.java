@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by yangxiong on 2019/2/17.
  */
-@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
+@CrossOrigin(allowCredentials = "true",value = {"http://localhost:8081", "http://localhost:8082"})
 @RestController
 @RequestMapping(value = "/product")
 public class ProductController extends GlobalHandler {

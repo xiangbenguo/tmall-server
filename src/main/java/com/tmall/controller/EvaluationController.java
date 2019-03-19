@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
+@CrossOrigin(allowCredentials = "true",value = {"http://localhost:8081", "http://localhost:8082"})
 @RestController
 @RequestMapping(value = "/evaluation")
 public class EvaluationController extends GlobalHandler {

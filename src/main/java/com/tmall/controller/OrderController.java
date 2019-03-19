@@ -15,7 +15,7 @@ import java.util.List;
  * Created by yangxiong on 2019/3/3.
  */
 
-@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
+@CrossOrigin(allowCredentials = "true",value = {"http://localhost:8081", "http://localhost:8082"})
 @RestController
 @RequestMapping(value = "/order")
 public class OrderController extends GlobalHandler {
@@ -100,5 +100,42 @@ public class OrderController extends GlobalHandler {
         }
         orderService.pay(order);
         return new ResultBean();
+    }
+
+    @RequestMapping(value = "/theDelivery", method = RequestMethod.POST)
+    public Object theDelivery(@RequestBody Order order) throws MyException {
+
+        if (order == null || order.getId() == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+        orderService.theDelivery(order);
+        return new ResultBean();
+    }
+
+    @RequestMapping(value = "/confirmGoods", method = RequestMethod.POST)
+    public Object confirmGoods(@RequestBody Order order) throws MyException {
+
+        if (order == null || order.getId() == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+        orderService.confirmGoods(order);
+        return new ResultBean();
+    }
+
+    @RequestMapping(value = "/complete", method = RequestMethod.POST)
+    public Object complete(@RequestBody Order order) throws MyException {
+
+        if (order == null || order.getId() == null) {
+            throw new MyException(CodeMessageDef.PARAMETER_ERROR);
+        }
+        orderService.complete(order);
+        return new ResultBean();
+    }
+
+    @RequestMapping(value = "/userOrderStatus", method = RequestMethod.GET)
+    public Object userOrderStatus(@RequestParam(required = false) Integer status) throws MyException {
+
+        List<Order> list = orderService.userOrderStatus(getUserId(), status);
+        return new ResultBean(list);
     }
 }

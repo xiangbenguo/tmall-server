@@ -1,7 +1,9 @@
 package com.tmall.service.impl;
 
 import com.tmall.dao.OrderMapper;
+import com.tmall.dao.ProductMapper;
 import com.tmall.entity.Order;
+import com.tmall.entity.Product;
 import com.tmall.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderMapper orderMapper;
+
+    @Autowired
+    ProductMapper productMapper;
 
     @Override
     public List<Order> list() {
@@ -57,5 +62,40 @@ public class OrderServiceImpl implements OrderService {
         SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
         order.setPayTime(dateFormat.format(date));
         orderMapper.updateByPrimaryKeySelective(order);
+    }
+
+    @Override
+    public void theDelivery(Order order) {
+        Date date=new Date();
+        SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        order.setDeliveryTime(dateFormat.format(date));
+        orderMapper.updateByPrimaryKeySelective(order);
+    }
+
+    @Override
+    public void confirmGoods(Order order) {
+        Date date=new Date();
+        SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        order.setConfirmTime(dateFormat.format(date));
+        orderMapper.updateByPrimaryKeySelective(order);
+
+        Integer monthSales = productMapper.selectByPrimaryKey(order.getPid()).getMonthSales();
+        Product product = new Product();
+        product.setId(order.getPid());
+        product.setMonthSales(monthSales + 1);
+
+        productMapper.updateByPrimaryKeySelective(product);
+
+    }
+
+    @Override
+    public void complete(Order order) {
+
+        orderMapper.updateByPrimaryKeySelective(order);
+    }
+
+    @Override
+    public List<Order> userOrderStatus(Integer uid, Integer status) {
+        return orderMapper.userOrderStatus(uid, status);
     }
 }

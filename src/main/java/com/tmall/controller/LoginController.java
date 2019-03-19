@@ -9,7 +9,7 @@ import com.tmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(allowCredentials = "true", value = "http://localhost:8081")
+@CrossOrigin(allowCredentials = "true",value = {"http://localhost:8081", "http://localhost:8082"})
 @RestController
 @RequestMapping("/login")
 public class LoginController extends GlobalHandler {

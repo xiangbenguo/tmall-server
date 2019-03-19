@@ -56,12 +56,12 @@ public class Order {
     /**
      *
      */
-    private Date deliveryTime;
+    private String deliveryTime;
 
     /**
      *
      */
-    private Date confirmTime;
+    private String confirmTime;
 
 
     /**
@@ -210,19 +210,19 @@ public class Order {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getDeliveryTime() {
+    public String getDeliveryTime() {
         return deliveryTime;
     }
 
-    public void setDeliveryTime(Date deliveryTime) {
+    public void setDeliveryTime(String deliveryTime) {
         this.deliveryTime = deliveryTime;
     }
 
-    public Date getConfirmTime() {
+    public String getConfirmTime() {
         return confirmTime;
     }
 
-    public void setConfirmTime(Date confirmTime) {
+    public void setConfirmTime(String confirmTime) {
         this.confirmTime = confirmTime;
     }
 

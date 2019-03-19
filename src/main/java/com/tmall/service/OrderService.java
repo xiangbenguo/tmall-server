@@ -21,4 +21,12 @@ public interface OrderService {
     List<Order> getUserOrder(Integer uid);
 
     void pay(Order order);
+
+    void theDelivery(Order order);
+
+    void confirmGoods(Order order);
+
+    void complete(Order order);
+
+    List<Order> userOrderStatus(Integer uid, Integer status);
 }
