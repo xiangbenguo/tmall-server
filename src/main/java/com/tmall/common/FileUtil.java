@@ -2,12 +2,16 @@ package com.tmall.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by xiangbenguo on 2019/3/11.
@@ -43,6 +47,26 @@ public class FileUtil {
         }
 
         return filename;
+    }
+
+    /**
+     * 同时上传多个文件
+     * @param files
+     * @return
+     * @throws MyException
+     */
+    public List<String> uploadFiles(MultipartFile[] files) throws MyException {
+        List<MultipartFile> list = Arrays.asList(files);
+        if (CollectionUtils.isEmpty(list)) {
+            throw new MyException(CodeMessageDef.FILE_IS_NULL);
+        }
+
+        List<String> names = new ArrayList<>();
+        for (MultipartFile file : list) {
+            names.add(upload(file));
+        }
+
+        return names;
     }
 
     /**

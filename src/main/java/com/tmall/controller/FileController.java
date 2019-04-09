@@ -29,4 +29,15 @@ public class FileController extends GlobalHandler {
     public Object upload(@RequestParam(value = "file", required = false) MultipartFile file) throws MyException {
        return new ResultBean(util.upload(file));
     }
+
+    /**
+     * 多文件上传
+     * @param files
+     * @return
+     * @throws MyException
+     */
+    @PostMapping("/uploadFiles")
+    public Object uploadFiles(@RequestParam(value = "files", required = false) MultipartFile[] files) throws MyException {
+        return new ResultBean(util.uploadFiles(files));
+    }
 }
