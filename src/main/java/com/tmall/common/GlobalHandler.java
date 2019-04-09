@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by yangxiong on 2019/3/5.
+ * Created by xiangbenguo on 2019/3/5.
  */
 public class GlobalHandler {
 

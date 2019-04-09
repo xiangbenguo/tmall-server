@@ -6,7 +6,7 @@ import com.tmall.entity.tool.ProductQuery;
 import java.util.List;
 
 /**
- * Created by yangxiong on 2019/2/17.
+ * Created by xiangbenguo on 2019/2/17.
  */
 public interface ProductService {
     List<Product> list(ProductQuery query);

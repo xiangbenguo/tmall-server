@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * Created by yangxiong on 2019/3/11.
+ * Created by xiangbenguo on 2019/3/11.
  */
-@CrossOrigin("*")
+@CrossOrigin(allowCredentials = "true",value = {"http://localhost:8081", "http://localhost:8082"})
 @RestController
 @RequestMapping(value = "/file")
 public class FileController extends GlobalHandler {

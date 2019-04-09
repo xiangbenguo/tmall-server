@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * Created by yangxiong on 2019/3/11.
+ * Created by xiangbenguo on 2019/3/11.
  */
 @Configuration
 public class FileUtil {

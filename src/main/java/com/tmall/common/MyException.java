@@ -1,7 +1,7 @@
 package com.tmall.common;
 
 /**
- * Created by yangxiong on 2019/3/5.
+ * Created by xiangbenguo on 2019/3/5.
  */
 public class MyException extends Exception {
     private static final long serialVersionUID = 3162989605548935190L;

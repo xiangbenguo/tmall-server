@@ -5,7 +5,7 @@ import com.tmall.entity.ProductImg;
 import java.util.List;
 
 /**
- * Created by yangxiong on 2019/3/3.
+ * Created by xiangbenguo on 2019/3/3.
  */
 public interface ProductImgService {
     List<ProductImg> list();

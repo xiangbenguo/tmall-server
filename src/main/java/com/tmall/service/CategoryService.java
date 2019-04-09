@@ -5,7 +5,7 @@ import com.tmall.entity.Category;
 import java.util.List;
 
 /**
- * Created by yangxiong on 2019/3/2.
+ * Created by xiangbenguo on 2019/3/2.
  */
 public interface CategoryService {
     List<Category> list();

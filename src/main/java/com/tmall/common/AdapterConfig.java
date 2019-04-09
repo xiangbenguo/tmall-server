@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
 /**
- * Created by yangxiong on 2019/3/11.
+ * Created by xiangbenguo on 2019/3/11.
  */
 @Configuration
 public class AdapterConfig implements WebMvcConfigurer {

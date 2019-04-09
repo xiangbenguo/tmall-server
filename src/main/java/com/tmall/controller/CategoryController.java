@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by yangxiong on 2019/3/2.
+ * Created by xiangbenguo on 2019/3/2.
  */
-@CrossOrigin("*")
+@CrossOrigin(allowCredentials = "true",value = {"http://localhost:8081", "http://localhost:8082"})
 @RestController
 @RequestMapping(value = "/category")
 public class CategoryController extends GlobalHandler {

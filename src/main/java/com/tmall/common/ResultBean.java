@@ -1,7 +1,7 @@
 package com.tmall.common;
 
 /**
- * Created by yangxiong on 2019/3/2.
+ * Created by xiangbenguo on 2019/3/2.
  */
 public class ResultBean {
     private int code;

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Created by yangxiong on 2019/2/17.
+ * Created by xiangbenguo on 2019/2/17.
  */
 @Service("productService")
 public class ProductServiceImpl implements ProductService {
